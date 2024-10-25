@@ -1,0 +1,13 @@
+{
+    "name": "puppet-cqedu",
+    "version": "0.1",
+    "author": "Maxime Boissonneault",
+    "summary": "Puppet code specific to CQ's edu platform",
+    "license": "MIT",
+    "source": "https://github.com/calculquebec/puppet-cqedu",
+    "project_page": "https://github.com/calculquebec/puppet-cqedu",
+    "issues_url": "https://github.com/calculquebec/puppet-cqedu/issues",
+    "dependencies": [ 
+        { "name":"puppetlabs/stdlib", "version_requirement": ">= 5.2.0"  }
+    ]
+}
