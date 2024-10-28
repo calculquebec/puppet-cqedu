@@ -1,5 +1,7 @@
 class cqedu {
-  #Yumrepo['epel'] -> Package<| tag == Restic::Package |>
+  Yumrepo<| tag == 'epel' |> -> Package<| tag == 'restic' |>
+  Restic::Repository<| |> -> Exec<| tag == tutor |>
+
   exec { 'systemctl start restic_restore_restore_edx_repo':
     unless  => 'ls /backups/prod',
     require => Restic::Repository['restore_edx_repo'],
