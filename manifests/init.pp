@@ -29,8 +29,7 @@ class cqedu (
     $filename = "backup.${date}.tar.xz"
 
     exec { "tar xf ${path}/${filename} -C /tmp && sed -i -e 's/edu.calculquebec.cloud/edu-dev.calculquebec.cloud/g' /tmp/data/mysql_dump.sql && cd /tmp && tar cfJ ${path}/${filename} data && rm -rf /tmp/data":
-      refreshonly => true,
-      subscribe   => File["/${tutor_user}/.backup_restored"],
+      unless      => "grep -w ${date} /${tutor_user}/.backup_restored",
       before      => Exec["cp ${path}/${filename} ${tutor_backup_dir}"],
       path => ['/bin/', '/usr/bin'],
     }
