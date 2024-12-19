@@ -11,13 +11,13 @@ class cqedu (
   exec { 'systemctl start restic_restore_restore_edx_repo':
     unless  => 'ls /backups/prod',
     require => Restic::Repository['restore_edx_repo'],
-    before  => Package['tutor'],
+    before  => Class['tutor'],
     path    => ['/bin', '/usr/bin']
   }
   exec { 'systemctl start restic_restore_restore_edx_dev_repo':
     unless  => 'ls /backups/dev',
     require => Restic::Repository['restore_edx_dev_repo'],
-    before  => Package['tutor'],
+    before  => Class['tutor'],
     path    => ['/bin', '/usr/bin']
   }
 
@@ -31,6 +31,7 @@ class cqedu (
     exec { "tar xf ${path}/${filename} -C /tmp && sed -i -e 's/edu.calculquebec.cloud/edu-dev.calculquebec.cloud/g' /tmp/data/mysql_dump.sql && cd /tmp && tar cfJ ${path}/${filename} data && rm -rf /tmp/data":
       unless      => "grep -w ${date} /${tutor_user}/.backup_restored",
       before      => Exec["cp ${path}/${filename} ${tutor_backup_dir}"],
+      require     => [Exec['systemctl start restic_restore_restore_edx_repo'], Exec['systemctl start restic_restore_restore_edx_dev_repo']],
       path => ['/bin/', '/usr/bin'],
     }
   }
