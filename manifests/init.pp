@@ -1,5 +1,7 @@
 class cqedu (
   Boolean $patch_domain_before_restore = false,
+  String $source_domain = 'edu.calculquebec.cloud',
+  String $target_domain = 'edu-dev.calculquebec.cloud',
 ) {
   $tutor_user = 'tutor'
   $tutor_backup_dir = "/${tutor_user}/.local/share/tutor/env/backup/"
@@ -28,7 +30,7 @@ class cqedu (
     $path = $backup_to_restore['path']
     $filename = "backup.${date}.tar.xz"
 
-    exec { "tar xf ${path}/${filename} -C /tmp && sed -i -e 's/edu.calculquebec.cloud/edu-dev.calculquebec.cloud/g' /tmp/data/mysql_dump.sql && cd /tmp && tar cfJ ${path}/${filename} data && rm -rf /tmp/data":
+    exec { "tar xf ${path}/${filename} -C /tmp && sed -i -e 's/${source_domain}/${target_domain}/g' /tmp/data/mysql_dump.sql && cd /tmp && tar cfJ ${path}/${filename} data && rm -rf /tmp/data":
       unless      => "grep -w ${date} /${tutor_user}/.backup_restored",
       before      => Exec["cp ${path}/${filename} ${tutor_backup_dir}"],
       require     => [Exec['systemctl start restic_restore_restore_edx_repo'], Exec['systemctl start restic_restore_restore_edx_dev_repo'], File[$tutor_backup_dir], Tutor::Plugin['backup']],
