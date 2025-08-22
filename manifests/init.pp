@@ -22,6 +22,12 @@ class cqedu (
     before  => Class['tutor'],
     path    => ['/bin', '/usr/bin']
   }
+  exec { 'systemctl start restic_restore_restore_edx_test_repo':
+    unless  => 'ls /backups/test',
+    require => Restic::Repository['restore_edx_test_repo'],
+    before  => Class['tutor'],
+    path    => ['/bin', '/usr/bin']
+  }
 
   if $patch_domain_before_restore {
     $backup_to_restore = lookup('tutor::backup_to_restore')
