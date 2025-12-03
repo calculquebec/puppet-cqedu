@@ -1,6 +1,6 @@
 source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
 
-if [[ $SLURM_PARTITION == 'cip101-' ]]; then
+if [[ $SLURM_JOB_PARTITION == 'cip101-' ]]; then
 	export HOSTNAME=monordi
 	export HOME=/home/$USER/.monordi
 	export PS1="[\u@monordi \W]$ "
