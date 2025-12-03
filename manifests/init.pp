@@ -49,13 +49,13 @@ class cqedu::mgmt {
   Nfs::Server::Export <| |> -> File<| tag == 'cqedu' |>
 
   file { '/home/.skel':
-    type    => 'directory',
+    ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
   }
   file { '/home/.skel/.bashrc':
-    type    => 'file',
+    ensure  => 'file',
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
