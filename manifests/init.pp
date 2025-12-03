@@ -55,10 +55,10 @@ class cqedu::mgmt {
     mode    => '0755',
   }
   file { '/home/.skel/.bashrc':
-    ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    content => 'puppet:///modules/cqedu/.bashrc',
+    ensure => 'file',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+    source => 'puppet:///modules/cqedu/.bashrc',
   }
 }
