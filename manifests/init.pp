@@ -45,7 +45,7 @@ class cqedu (
   }
 }
 
-class cqedu::mgmt1 {
+class cqedu::mgmt {
   file { '/home/.skel':
     type    => 'directory',
     owner   => 'root',
