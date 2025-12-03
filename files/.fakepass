@@ -4,7 +4,7 @@ from getpass import getpass
 import os
 import time
 
-hostname = os.environ['HOSTNAME']
+hostname = os.environ['HOSTNAME'].split('.')[0]
 user = os.environ['USER']
 
 prompt = f"({user}@{hostname}) Password: "
