@@ -4,7 +4,9 @@ if [[ $SLURM_PARTITION == 'cip101-' ]]; then
 	export HOSTNAME=monordi
 	export HOME=/home/$USER/.monordi
 	export PS1="[\u@monordi \W]$ "
+	mkdir -p $HOME
 	cd .monordi
+	touch document.txt
 fi
 
 squeue() {
