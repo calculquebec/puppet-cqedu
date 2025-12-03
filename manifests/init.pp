@@ -44,3 +44,20 @@ class cqedu (
     }
   }
 }
+
+class cqedu::mgmt1 {
+  file { '/home/.skel':
+    type    => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => Nfs::Server::Export['/home'],
+  }
+  file { '/home/.skel/.bashrc':
+    type    => 'file',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => 'puppet:///modules/cqedu/.bashrc',
+  }
+}

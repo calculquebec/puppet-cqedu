@@ -1,0 +1,19 @@
+source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
+
+if [[ $SLURM_PARTITION == 'cip101-' ]]; then
+	export HOSTNAME=monordi
+	export HOME=/home/$USER/.monordi
+	export PS1="[\u@monordi \W]$ "
+	cd .monordi
+fi
+
+squeue() {
+        /opt/software/slurm/bin/squeue $@ | grep --color=auto -v spawner-jupyte
+}
+
+sq() {
+        /opt/software/slurm/bin/squeue -u $USER $@ | grep --color=auto -v spawner-jupyte
+}
+
+export SALLOC_PARTITION="nodepool"
+
