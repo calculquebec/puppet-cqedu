@@ -46,7 +46,7 @@ class cqedu (
 }
 
 class cqedu::mgmt {
-  Profile::Nfs::Server<| |> -> File<| tag == 'cqedu' |>
+  Nfs::Server::Export <| |> -> File<| tag == 'cqedu' |>
 
   file { '/home/.skel':
     type    => 'directory',
