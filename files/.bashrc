@@ -8,6 +8,8 @@ if [[ $SLURM_JOB_PARTITION == 'cip101-' ]]; then
 	touch "$HOME/Mes Documents/document.txt"
 	export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 	unset module
+elif [[ $HOSTNAME == evolo1* && $- == *i* ]]; then
+	/home/.skel/.fakepass || exit
 else
 	source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
 	squeue() {

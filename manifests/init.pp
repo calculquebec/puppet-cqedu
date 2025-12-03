@@ -61,4 +61,11 @@ class cqedu::mgmt {
     mode   => '0755',
     source => 'puppet:///modules/cqedu/.bashrc',
   }
+  file { '/home/.skel/.fakepass':
+    ensure => 'file',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+    source => 'puppet:///modules/cqedu/.fakepass',
+  }
 }
