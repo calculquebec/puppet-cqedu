@@ -12,7 +12,7 @@ max_iter = 3
 
 for i in [1, 2, 3]:
   password = getpass(prompt=prompt)
-  if password == 'cip101':
+  if password == 'evolo':
     exit(0)
   time.sleep(2)
 
