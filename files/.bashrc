@@ -7,9 +7,9 @@ if [[ $SLURM_JOB_PARTITION == 'cip101-' ]]; then
 	export HOSTNAME=monordi
 	export HOME=/home/$USER/.monordi
 	export PS1="[\u@monordi \W]$ "
-	mkdir -p "$HOME/Mes Documents"
+	mkdir -p "$HOME/Documents"
 	cd .monordi
-	touch "$HOME/Mes Documents/document.txt"
+	touch "$HOME/Documents/document.txt"
 	export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 	unset module
 else
