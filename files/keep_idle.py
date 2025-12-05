@@ -92,7 +92,7 @@ if __name__ == "__main__":
         # if we need more or less nodes to stay on
         if num_target_nodes != num_online_or_booting_nodes:
             suspend_exc_nodes_new = update_suspend_exc_nodes_string(suspend_exc_nodes, partition, num_target_nodes)
-            if suspend_exc_nodes != suspend_exc_nodes_new:
+            if suspend_exc_nodes != suspend_exc_nodes_new or suspend_exc_nodes_new != get_config_value('SuspendExcNodes'):
                 print(f"updating SuspendExcNodes to {suspend_exc_nodes_new}")
                 controls = check_output(['sudo', scontrol, 'update', f'SuspendExcNodes={suspend_exc_nodes_new}'])
                 suspend_exc_nodes = suspend_exc_nodes_new
