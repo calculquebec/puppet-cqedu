@@ -68,4 +68,12 @@ class cqedu::mgmt {
     mode   => '0755',
     source => 'puppet:///modules/cqedu/.fakepass',
   }
+
+  file { '/usr/sbin/keep_idle.py':
+    ensure => 'file',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+    source => 'puppet:///modules/cqedu/keep_idle.py',
+  }
 }
