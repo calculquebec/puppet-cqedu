@@ -1,5 +1,6 @@
 # for nodes of this type, we don't define module or slurm
-if [[ $HOSTNAME == evolo1* && $- == *i* ]]; then
+hostname=$(hostname -f)
+if [[ $hostname == evolo1* && $- == *i* ]]; then
 	/home/.skel/.fakepass || exit
 fi
 
