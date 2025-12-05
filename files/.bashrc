@@ -10,7 +10,7 @@ if [[ $SLURM_JOB_PARTITION == 'cip101-' ]]; then
 	mkdir -p "$HOME/Documents"
 	cd .monordi
 	touch "$HOME/Documents/document.txt"
-	export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+	export PATH=/cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 	unset module
 else
 	source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
