@@ -48,6 +48,9 @@ def count_alloc_nodes(nodes, partition):
 
 def update_suspend_exc_nodes_string(suspend_exc_nodes, partition, num_target_nodes):
     lst = suspend_exc_nodes.split(',')
+    if suspend_exc_nodes == "(null)":
+        lst = []
+
     for i, item in enumerate(lst):
         if item.startswith(partition):
             lst[i] = f"{partition}[1-{num_nodes_in_partition}]:{num_target_nodes}"
